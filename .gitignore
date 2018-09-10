@@ -1,0 +1,10 @@
+*.o
+*.out
+makefile
+*.pro
+*.pro.user
+*.mk
+makefile
+.cproject
+.project
+
