@@ -9,9 +9,9 @@ using namespace std;
 
 
 void change_date(int *d, int *m, int *y) {
-    *d = *d;
-    *m = *m;
-    *y = *y;
+    *d = *d + 5;
+    *m = *m + 1;
+    *y = *y + 1;
 }
 
 int main()
