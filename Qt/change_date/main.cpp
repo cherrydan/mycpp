@@ -25,7 +25,7 @@ int main()
     //Передаём адреса трех int-ов и получаем правильную дату
     change_date(&d, &m, &y);
 
-    cout << "d = " << d << " m = " << m << " y = " << y;
+    cout << "d = " << d << " m = " << m << " y = " << y << endl;
 
 
     return 0;
