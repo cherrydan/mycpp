@@ -22,6 +22,55 @@ using namespace std;
 int main()
 {
 
+    int i, j, imin, jmin, imax, jmax;
+    int N, M;
+    double min, max, b;
+    double **a;
+
+    //Создаем динамичеакую матрицу
+    cout << "N = ";
+    cin >> N;
+    cout << "M = ";
+    cin >> M;
+
+    a = new double *[N];
+    for(i = 0; i < M; i++)
+        a[i] = new double [M];
+
+    //Ввод в матрицу А
+    cout << "Ввод матрицы А: " << endl;
+    for(i = 0; i < N; i++)
+        for(j = 0; j < N; j++)
+            cin >> a[i][j];
+
+    //двойной цикл для поиска минимального и максимального элемента в матрице и их индексов
+    for(max=min=a[0][0], imax=jmax=imin=jmin=i=0; i < N; i++)
+        for(j = 0; j < M; j++)
+        {
+            if(a[i][j] > max) {
+                max = a[i][j]; //максимальный элемент найден
+                imax = i; //его индекс по i
+                jmax = j; //его индекс по j
+            }
+            if(a[i][j] < min) {
+                min = a[i][j];
+                imin = i;
+                jmin = j;
+            }
+        }
+    //обмен двух элементов матрицы
+    b = a[imax][jmax];
+    a[imax][jmax] = a[imin][jmin];
+    a[imin][jmin] = b;
+
+    //Вывод преобразованой матрицы
+    cout << "Вывод преобразованной матрицы А: " << endl;
+    for(i = 0; i < N, cout << endl; i++)
+        for(j = 0; j < M; j++)
+            cout << a[i][j] << '\t';
+
+    cout << endl;
+
 
     return 0;
 }
