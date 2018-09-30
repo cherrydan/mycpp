@@ -41,6 +41,8 @@ bool is_valid_card(string strVal, string *cardSystem) {
     int a[ARRAY_SIZE];
     int j = 0;
 
+    int sum = 0;
+
     //Преобразовываем строку переданную в кач-ве аргумента в массив из одиночных цифр
     for(unsigned int i = 0; i <= strVal.length(); i++)
         if(strVal[i]>='0' && strVal[i]<='9')
@@ -49,9 +51,27 @@ bool is_valid_card(string strVal, string *cardSystem) {
 
     *cardSystem = card_system(a[0]);
 
-    return true;
+
+    for(unsigned k = 0; k <= ARRAY_SIZE; k++)
+    {
+        if(k % 2 == 0) {
+        int r = a[k];
+        r*=2;
+
+        if(r > 9)
+            sum += (r - 9);
+       else
+            sum += r;
+        }
+
+        else
+            sum += a[k];
+    }
 
 
+    if(sum % 10 == 0) return true;
+    else
+        return false;
 
 }
 
@@ -74,9 +94,19 @@ int main()
             return -1;
         } else {
             cout << "Всё введено правильно, проверяем..." << endl;
-            is_valid_card(strVal, &cardSystem);
 
-            cout << cardSystem << endl;
+
+            if(is_valid_card(strVal, &cardSystem)) {
+                cout << cardSystem << endl;
+                cout << "карта №" << strVal << " ВАЛИДНА!" << endl;
+
+            }
+            else {
+                cout << cardSystem << endl;
+                cout << "карта №" << strVal << " НЕДЕЙСТВИТЕЛЬНА!" << endl;
+            }
+
+
         }
     }
 
