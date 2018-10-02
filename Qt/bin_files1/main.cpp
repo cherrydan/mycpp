@@ -8,34 +8,54 @@
 
 
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
 int main()
 {
 
-    FILE *f; //описываем переменную-двоичный файл
+    FILE *stream; //описываем переменную-двоичный файл
+    int i = 0, n = 0;
+    double *a;
+    int numwritten = 0,numread = 0;
 
-    int i, n;
-    double a;
+    if((stream = fopen("abc.dat","wb")) != NULL) {
+        cout << "N = ";
+        cin >> n;
 
-    f = fopen("abc.dat","wb"); //создание файла abc.dat в режиме записи
+        a = new double[n];
 
-    cout << "N = "; //спрашиваем у пользователя количество чисел, которые будем вводить
+        for(i = 0; i < n; i++)
+            cin >> a[i];
 
-    cin >> n;
+        numwritten = fwrite(a, sizeof(double), n, stream);
 
-    fwrite(&n, sizeof(int), 1, f); //пишем полученное от пользователя в n (передаём адрес), размер типа элементаб количество элементов, ссылку на FILE*
+        cout << "Wrote " << numwritten << " items" << endl;
+        fclose(stream);
 
-    //считываем числа с консоли и пишем их в файл
-
-    for(i = 0; i < n; i++) {
-        cout << "a = ";
-        cin >> a;
-        fwrite(&a, sizeof(double), 1, f);
+    }
+    else {
+        cout << "Error creating or opening file!" << endl;
+        return -1;
     }
 
-    fclose(f); //закрываем ссылку на файл
+    if((stream = fopen("abc.dat","rb")) != NULL) {
+        numread = fread(a, sizeof(double), n, stream);
+        cout << "Number of items read  " << numread << endl;
+        cout << "Contents of binary file: " << endl;
+
+        for(i = 0; i < n; i++)
+            cout << a[i] << '|';
+
+        cout << endl;
+
+        fclose(stream);
+    }
+    else {
+        cout << "Error creating or opening file!" << endl;
+        return -1;
+    }
 
     return 0;
 }
