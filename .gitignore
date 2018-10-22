@@ -1,6 +1,8 @@
 *.o
 *.out
 *.txt
+*.dat
+*.bin
 makefile
 *.pro
 *.pro.user
