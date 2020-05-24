@@ -23,7 +23,7 @@ int main()
     for(i = 0; i < word_leangth; i++) //печатаем длину посл. слова
         printf("X");                  //просто оно не заканчивается пробелом, а зак. знаком конца строки
  
-    printf("\nPress any kay to exit\n");
+    printf("\nPress any key to exit\n");
     getchar();                            //это просто чтобы спокойно посмотреть результат и выйти по нажатию любой кнопки
  
     return 0;
