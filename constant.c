@@ -24,7 +24,7 @@ radius = diameter / 2;
 area = PI * (radius * radius);
 //выводим два знака после точки
 printf("\n\t Длина окружности: %.2f мм.", circ);
-printf("\n\t и площадь окружности %.2f мм.", area);
+printf("\n\t и площадь окружности %.2f мм.2", area);
 printf("\n");
 
 return 0;

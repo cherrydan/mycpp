@@ -16,10 +16,10 @@ const float KIR = 5.00;
 
 int main() {
 
-	short int minutes, code;
+	int minutes, code;
 	float sum;
 	char* cities[4] = {"МОСКВА", "РОСТОВ", "КРАС-ДАР", "КИРОВ"};
-	short int codes[4] = {905, 194, 491, 800};
+	int codes[4] = {905, 194, 491, 800};
 	printf("МЕЖДУГОРОДНЫЙ ПЕРЕГОВОРНЫЙ ПУНКТ\n");
 	printf("Город:        Код:\n");
 	for(int i = 0; i <= 1; i++) {

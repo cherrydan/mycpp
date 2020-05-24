@@ -38,7 +38,7 @@
 	 for(int i = 0; i < ARRAY_SIZE; i++) {
 		 printf(" %d ", my_list[i]);
 	 }
-	 
+	 printf("\n");
 	 /*
 	 Если мы знаем длинну массива, и чтобы не мучится с функцией сравнения
 	 cmp 
@@ -50,7 +50,7 @@
 	 for(int i = ARRAY_SIZE - 1; i >= 0; i--) {
 		 printf(" %d ", my_list[i]);
 	 }
-	 
+	 printf("\n");
 	 return 0;
 	 
  }

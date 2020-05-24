@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/images">
-        <file>write.png</file>
-        <file>read.png</file>
-        <file>File-explorer-icon.png</file>
-    </qresource>
-</RCC>

@@ -17,8 +17,8 @@ int main() {
 
 	fahr = lower; /*Началоное значение температуры*/
 	printf("F\tC\n");
-/*Пока температура не достигла высшего предела*/
-while(fahr <= upper) {
+	/*Пока температура не достигла высшего предела*/
+	while(fahr <= upper) {
 	celsius = 5*(fahr-32)/9; /*Формула перевода температур*/
 	printf("%d\t%d\n",fahr,celsius);
 	fahr = fahr + step;
