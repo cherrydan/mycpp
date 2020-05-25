@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1590426974 source:/home/danny/Dropbox/Programming/MyC/simple_calc/main.c
+	<stdio.h>
+	<stdlib.h>
+
