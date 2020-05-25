@@ -1,6 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*
+ *
+ * Program gets value between 100 and 999
+ * Calculates steps of presistence
+ *
+ * @autor: Danny
+ */
+
 int main()
 {
 
@@ -13,7 +21,7 @@ int main()
         printf("Value: %d\n", i);
     else
         {
-            printf("Value too big or to small!");
+            printf("Value too big or too small!");
             return 1;
         }
     int first = i / 100 % 10;
