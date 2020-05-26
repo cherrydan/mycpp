@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1590506862 source:/home/danny/Dropbox/Programming/MyC/LessonsC/Beersong/main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	"song.h"
+
+1590506942 /home/danny/Dropbox/Programming/MyC/LessonsC/Beersong/song.h
+

@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include "song.h"
+int main()
+{
+    for(int i = 99; i >= 1; i--) {
+    if (i >= 11 && i <= 19) {
+    printf("%d %s\n", i, strings[0]);
+    }
+    else if(i % 10) {
+printf("%d %s\n", i, strings[2]);
+    }
+    else if((i % 10) == 2 ||  
+
+    }
+    return 0;
+}
