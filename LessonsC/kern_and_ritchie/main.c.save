@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+viu reverse(char s[]) {
+int i = 0;
+char s2[];
+while(s[i] != '\0') {
+i++;
+}
+for(int k = i; k >=0; k--) {
+s2 = (char *)s[k];
+}
+return s2;
+}
+
+
+int main()
+{
+    char s1[] = "Hello, world!";
+
+
+    return 0;
+}
