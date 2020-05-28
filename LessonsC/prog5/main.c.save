@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int m[10][10];
+    for(int i=1; i<= 9; i++)
+        {
+            for(int k = 1; k <= 9; k++)
+                {
+                    m[i][k] = i * k;
+                    printf("%d\t", m[i][k]);
+                }
+            printf("\n");
+        }
+
+    printf("\n");
+
+    for(int i = 1; i <= 9; i++)
+        {
+            for(int k=1; k<= 9; k++)
+                {
+                    if(i == 5)
+                        {
+                            m[i][k] = 5;
+                            printf("%d\t", m[i][k]);
+                        }
+                    else
+                        {
+                            m[i][k] = i * k;
+                            printf("%d\t", m[i][k]);
+                        }
+
+                }
+        }
+
+    return 0;
+}
