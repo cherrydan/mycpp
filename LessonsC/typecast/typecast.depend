@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1590757699 source:/home/danny/Dropbox/Programming/MyC/LessonsC/typecast/main.c
+	<stdio.h>
+	<inttypes.h>
+	<stdlib.h>
+
