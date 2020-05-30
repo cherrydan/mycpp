@@ -1,5 +1,6 @@
 # depslib dependency file v1.0
-1590746192 source:/home/danny/Dropbox/Programming/MyC/LessonsC/game1/main.c
+1590830492 source:/home/danny/Dropbox/Programming/MyC/LessonsC/game1/main.c
 	<stdio.h>
 	<stdlib.h>
+	<time.h>
 

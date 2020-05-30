@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1590738218 source:/home/danny/Dropbox/Programming/MyC/LessonsC/gtk1/main.c
+1590825464 source:/home/danny/Dropbox/Programming/MyC/LessonsC/gtk1/main.c
 	<gtk/gtk.h>
 
 1546476252 /usr/include/gtk-3.0/gtk/gtk.h
