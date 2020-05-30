@@ -1,0 +1,11 @@
+#include <stdio.h>
+#include <stdlib.h>
+void one_tree();
+void two();
+int main()
+{
+    printf("Начать сейчас:\n");
+    one_tree();
+    printf("порядок!")
+    return 0;
+}
