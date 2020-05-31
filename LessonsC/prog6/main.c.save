@@ -1,0 +1,24 @@
+/*
+ Макросы и генерация случайных чисел
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define SEED srand(time(NULL))
+#define ARRAY_SIZE 10
+
+int main()
+{
+    SEED;
+    int ar[ARRAY_SIZE];
+    for(int i = 0; i < ARRAY_SIZE; i++) {
+    printf
+    }
+    unsigned i = 0;
+    //генерация от 0 до 18
+    i = (rand() * 1.0 / RAND_MAX) * 10 + 10;
+    printf("%d\n", i);
+    return 0;
+}
