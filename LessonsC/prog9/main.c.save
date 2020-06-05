@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h>
+/* Передача параметра функции по указателю*/
+
+void Inc3(int *x, int *y) {
+*x += 1;
+*y *= 2;
+}
+
+void swap(int *x, int *y) {
+
+
+}
+
+int main()
+{
+    int x = 5, y = 10;
+    printf("x = %d, y = %d\n", x,y);
+    Inc3(&x, &y);
+    printf("Увеличиваем переменную x на 1\nА переменную y в два раза, через указатель\n");
+    printf("x = %d y = %d\n", x, y);
+
+
+    return 0;
+}

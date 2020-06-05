@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+print_number_factors(int x) {
+printf("Число-множитель: ");
+int divisor = 2;
+while(x != 1) {
+while(x%divisor == 0) {
+print("%d ")
+}
+}
+
+}
+
+int main()
+{
+    int x;
+    printf("Введите X для поиска его множителей: ");
+    scanf("%d", &x);
+    print_number_factors(x);
+    return 0;
+}

@@ -31,22 +31,16 @@ int main()
             key = getchar();
             ox = x;
             oy = y;
+            if (key == 'w')
+                y--;
+            else if (key == 's')
+                y++;
+            else if (key == 'a')
+                x--;
+            else if (key == 'd')
+                x++;
             //обрабатываем ввод с клавиатуры
-            switch(key)
-                {
-                    case 'w':
-                        y--;
-                        break;
-                    case 's':
-                        y++;
-                        break;
-                    case 'a':
-                        x--;
-                        break;
-                    case 'd':
-                        x++;
-                        break;
-                }
+
             //проверяем, не достигла ли собака границ игрового поля, если да
             if (mas[y][x] == '#')
                 {

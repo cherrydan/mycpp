@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    float x, y;
+    x = 3.14; y = 2.50;
+    printf("x = %.2f y = %.2f\n", x, y);
+    float fPtr = &x;
+    *fPtr = 1.76;
+    fPtr = &y;
+    *fPtr = 
+    return 0;
+}

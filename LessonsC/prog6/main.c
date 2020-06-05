@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define SEED srand(time(NULL))
+#define SEED srand(time(NULL)) //макрос, инициализирующий генератор случ. чисел
 #define ARRAY_SIZE 10
 
 int main()
@@ -21,7 +21,7 @@ int main()
     unsigned i = 0;
     //генерация от 0 до 18
     SEED;
-    i = (rand() * 1.0 / RAND_MAX) * 10 + 11;
+    i = rand() % 10 + 10; //или так % 10 (нижнее значение) + смещение значений
     printf("%d\n", i);
     SEED;
     for(int j = 0; j < ARRAY_SIZE; j++) {

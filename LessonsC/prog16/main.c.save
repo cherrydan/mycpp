@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    char *mas = NULL;
+    int cnt = 0;
+    printf("Введите размер массива ");
+    scanf("%d", &cnt);
+
+    mas = malloc(sizeof(int)*cnt);
+    if (mas != NULL)
+        {
+            mas[0] = 2;
+            for(int i = 0; i < cnt; i++)
+                {
+                    mas[i+1] = mas[i] * 2;
+                    printf("%d\n", mas[i]);
+                }
+            printf("\n");
+            for(int i = 0; i < cnt; i++)
+                {
+                    printf("Адрес: %p\n", mas+i);
+                }
+        }
+    free(mas);
+    mas = NULL;
+
+    return 0;
+}

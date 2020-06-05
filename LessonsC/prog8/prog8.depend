@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1591000150 source:/home/danny/Dropbox/Programming/MyC/LessonsC/prog8/main.c
+	<stdio.h>
+	<stdlib.h>
+

@@ -1,10 +1,12 @@
 # depslib dependency file v1.0
-1590928954 source:/home/danny/Dropbox/Programming/MyC/LessonsC/webserver/main.c
+1591008935 source:/home/danny/Dropbox/Programming/MyC/LessonsC/webserver/main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<errno.h>
-	<sys/socket.h>
-	<unistd.h>
 	<netdb.h>
+	<time.h>
+	<sys/socket.h>
+	<arpa/inet.h>
+	<unistd.h>
 

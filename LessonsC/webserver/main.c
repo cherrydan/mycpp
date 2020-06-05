@@ -2,56 +2,189 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
-#include <sys/socket.h> //библиотека для работы с сокетами
-#include <unistd.h>
 #include <netdb.h>
+#include <time.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#include <unistd.h>
 
-#define SERVER_PORT "8080"
+// http://localhost:8000
 
-int create_socket(const char*);
+#define SERVER_PORT    "9000"
+#define MAX_CONNECTION 10
+
+typedef enum
+{
+    eHTTP_UNKNOWN = 0,
+    eHTTP_CONNECT,
+    eHTTP_DELETE,
+    eHTTP_GET,
+    eHTTP_HEAD,
+    eHTTP_OPTIONS,
+    eHTTP_PATH,
+    eHTTP_POST,
+    eHTTP_PUT,
+    eHTTP_TRACE
+} eHTTPMethod;
+
+typedef struct
+{
+    eHTTPMethod type;
+    char path[255];
+} sHTTPHeader;
+
+void *get_client_addr(struct sockaddr *);
+int create_socket(const char *);
+void http_request(int);
+void parse_http_request(const char *, sHTTPHeader *);
+void send_message(int, const char*);
+void send_404();
+
 
 int main()
 {
+    int sock;
+
+    sock = create_socket(SERVER_PORT);
+    if(sock < 0)
+        {
+            fprintf(stderr, "error create socket\n");
+            return -1;
+        }
+
+    printf("server created!\n");
+
+    struct sockaddr_storage client_addr;
+    int client_d;
+    //char client_ip
+    while(1)
+        {
+            socklen_t s_size = sizeof(client_addr);
+            client_d = accept(sock, (struct sockaddr*)&client_addr, (socklen_t *)&s_size);
+
+            if(client_d == -1)
+                {
+                    fprintf(stderr, "error accept\n");
+                    return -1;
+                }
+
+            char ip[INET6_ADDRSTRLEN];
+            inet_ntop(client_addr.ss_family, get_client_addr((struct sockaddr *)&client_addr), ip, sizeof ip);
+            printf("Connection succesful to %s!\n", ip);
+
+            http_request(client_d);
+
+            close(client_d);
+        }
 
     return 0;
 }
 
-int create_socket(const char* apstrPort)
+
+void *get_client_addr(struct sockaddr *sa)
+{
+    if (sa->sa_family == AF_INET)
+        {
+            return &(((struct sockaddr_in*)sa)->sin_addr);
+        }
+
+    return &(((struct sockaddr_in6*)sa)->sin6_addr);
+}
+
+int create_socket(const char *apstrPort)
 {
     struct addrinfo hints;
     struct addrinfo *servinfo;
     struct addrinfo *p;
+
     memset(&hints, 0, sizeof(hints));
-//неважно, какой версии будет IP
-    hints.ai_family = AF_UNSPEC;
-//тип сокета
+
+    // IPv4 or IPv6
+    hints.ai_family   = AF_UNSPEC;
     hints.ai_socktype = SOCK_STREAM;
-//IP выделяется автоматически
-    hints.ai_flags = AI_PASSIVE;
+    hints.ai_flags    = AI_PASSIVE;
+
     int r = getaddrinfo(NULL, apstrPort, &hints, &servinfo);
-    if (r != 0)
+    if( r != 0)
         {
-            fprintf(stderr, "Error in getaddrinfo()\n");
+            fprintf(stderr, "error getaddrinfo()\n");
             return -1;
         }
-    int sock, yes;
-//перебираем адреса
+
+    int sock;
+    int yes = 1;
     for(p = servinfo; p != NULL; p = p->ai_next)
         {
             sock = socket(p->ai_family, p->ai_socktype, p->ai_protocol);
             if(sock == -1)
                 continue;
-            if(setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int)) == -1) {
-            fprintf(stderr, "Error in setsockopt()\n");
-            close(sock);
-            freeaddrinfo(servinfo);
-            return -2;
-            }
 
+            if (setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int)) == -1)
+                {
+                    fprintf(stderr, "error setsockopt\n");
+                    close(sock);
+                    freeaddrinfo(servinfo); // all done with this structure
+                    return -2;
+                }
 
+            if(bind(sock, p->ai_addr, p->ai_addrlen) == -1)
+                {
+                    close(sock);
+                    continue;
+                }
+            break;
         }
 
+    freeaddrinfo(servinfo); // all done with this structure
 
-    return 0;
+    if(p == NULL)
+        {
+            fprintf(stderr, "failed to find address\n");
+            return -3;
+        }
+
+    if(listen(sock, MAX_CONNECTION) == -1)
+        {
+            fprintf(stderr, "error listen\n");
+            return -4;
+        }
+
+    return sock;
+}
+
+
+void http_request(int aSock)
+{
+    const int request_buffer_size = 65536;
+
+    char request[request_buffer_size];
+    int bytes_recieved = recv(aSock, request, request_buffer_size -1, 0);
+    if (bytes_recieved < 0)
+        {
+            fprintf(stderr, "Error recieve data\n");
+            return;
+        }
+    request[bytes_recieved] = '\0';
+    printf("request: %s\n", request);
+    sHTTPHeader req;
+    parse_http_request(request, &req);
+    if(req.type == eHTTP_GET)
+        send_message(aSock,
+                     "sensor 1: 10<br> sensor 2: 20 <br> <a href = \"http://cppprosto.blogspot.com/\">Внешняя ссылка</a>");
+}
+
+void send_message(int aSock, const char* message)
+{
+
+}
+
+
+void parse_http_request(const char *apstrRequest, sHTTPHeader *apHeader)
+{
+
+}
+
+void send_404()
+{
 
 }
