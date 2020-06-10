@@ -3,26 +3,39 @@
 
 int main()
 {
-    char *mas = NULL;
+    int *mas = NULL;
     int cnt = 0;
     printf("Введите размер массива ");
     scanf("%d", &cnt);
-
+    //Выделение памяти под динамический массив
     mas = malloc(sizeof(int)*cnt);
     if (mas != NULL)
         {
             mas[0] = 2;
-            for(int i = 0; i < cnt; i++)
+            printf("%d\n", mas[0]);
+            for(int i = 1; i <= cnt; i++)
                 {
-                    mas[i+1] = mas[i] * 2;
+                    mas[i] = mas[i-1] * 2;
                     printf("%d\n", mas[i]);
                 }
             printf("\n");
+
+            //увеличиваем размер массива на 4 элемента
+            cnt += 4;
+            mas = realloc(mas, sizeof(*mas) * cnt);
+            
+            for(int i = cnt - 4; i < cnt; i++) {
+            mas[cnt]
+            }
+
+
+            //Выводим адреса ячеек массива, между ними - 4 байта
             for(int i = 0; i < cnt; i++)
                 {
                     printf("Адрес: %p\n", mas+i);
                 }
         }
+
     free(mas);
     mas = NULL;
 

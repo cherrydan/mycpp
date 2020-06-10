@@ -30,5 +30,9 @@ int main()
             printf("%d\n", *a);
             freeAndNull(&a);
         }
+    if (a == NULL)
+        {
+            printf("a-pointer is NULL\n");
+        }
     return 0;
 }

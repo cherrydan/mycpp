@@ -8,7 +8,7 @@ int main()
     printf("Введите размер массива ");
     scanf("%d", &cnt);
     //Выделение памяти под динамический массив
-    mas = malloc(sizeof(int)*cnt);
+    mas = malloc(sizeof(*mas)*cnt);
     if (mas != NULL)
         {
             mas[0] = 2;
@@ -19,12 +19,15 @@ int main()
                     printf("%d\n", mas[i]);
                 }
             printf("\n");
+
+
             //Выводим адреса ячеек массива, между ними - 4 байта
             for(int i = 0; i < cnt; i++)
                 {
                     printf("Адрес: %p\n", mas+i);
                 }
         }
+
     free(mas);
     mas = NULL;
 
