@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+#define N 10
+/* Указатель на функцию, передача функции как указателя в качестве параметра*/
+
+//описываем тип функции которая будет нашим шаблонным указателем
+typedef int (*TFunc)(int, int);
+
+//реализация функции по шаблону*/
+int max(int a, int b) {
+if (a > b) return a;
+else return b;
+}
+
+int min(int a, int b) {
+if(a < b) return a;
+else return b;
+}
+
+//функция, принимающая указатель на функцию как параметр
+int getOne(int mas[], TFunc fn) {
+int val = mas[0];
+for(int i = 1; i < N; i++) {
+
+}
+}
+
+int main()
+{
+    printf("%d\n", getOne(min));
+
+    return 0;
+}
