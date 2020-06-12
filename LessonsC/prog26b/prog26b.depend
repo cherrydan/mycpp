@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1591972465 source:/home/danny/Dropbox/Programming/MyC/LessonsC/prog26b/main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+

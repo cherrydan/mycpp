@@ -1,0 +1,19 @@
+#include <stdio.h>
+/*перевод кварт в граммы*/
+
+
+int main()
+{
+    const int quart = 950;
+    const double mol = 3.0e-
+    int val = 0;
+    printf("Введите количество воды в квартах: ");
+    scanf("%d", &val);
+    if(val > 0 && val <= 10) {
+    printf("В %d квартах содержится %d грамм.", val, val*quart);
+    }
+    else {
+    printf("Введено число >0 или <10\n");
+    }
+    return 0;
+}

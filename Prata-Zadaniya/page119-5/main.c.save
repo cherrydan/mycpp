@@ -1,0 +1,9 @@
+#include <stdio.h>
+/*работаем с экспоненциальной записью*/
+
+int main()
+{
+    const double yearSec = 3.156E7;
+    double res =
+    return 0;
+}
