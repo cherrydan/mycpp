@@ -1,0 +1,16 @@
+#include <stdio.h>
+/*
+ Траектории кузнечика
+ (Тимофей Хирьянов
+*/
+int number_of_trajectories(int n) {
+
+}
+
+
+
+int main()
+{
+
+    return 0;
+}
