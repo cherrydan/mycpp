@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1593243416 source:/home/danny/Dropbox/Programming/MyC/LessonsC/dyn_arrays2/main.c
+	<stdio.h>
+	<stdlib.h>
+
